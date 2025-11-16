@@ -31,6 +31,7 @@ radius = 2.0
 height = 6.0
 
 [node name="Bee" type="Area2D"]
+collision_layer = 4
 script = ExtResource("1_b1nx6")
 
 [node name="b_sprites" type="AnimatedSprite2D" parent="."]

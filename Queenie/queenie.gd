@@ -35,15 +35,13 @@ func atirar():
 	var novo_projetil = bullet.instantiate()
 	
 	get_tree().root.add_child(novo_projetil)
-	
 	novo_projetil.global_position = global_position
-	var direcao_disparo: Vector2 = Vector2.ZERO
-	if animation_player.flip_h:
-		direcao_disparo = Vector2.LEFT
-	else:
-		direcao_disparo = Vector2.RIGHT
 	
-	novo_projetil.direcao = direcao_disparo.normalized()
+	var mouse_posicao = get_global_mouse_position()
+	var direcao_vetor = (mouse_posicao - novo_projetil.global_position).normalized()
+	novo_projetil.direcao = direcao_vetor
+	
+	novo_projetil.direcao = direcao_vetor.normalized()
 	$TimerCooldownTiro.start(cooldown_tiro)
 	
 func _on_timer_cooldown_tiro_timeout():

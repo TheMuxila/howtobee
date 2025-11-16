@@ -31,6 +31,8 @@ radius = 2.0
 height = 6.0
 
 [node name="bee_bullet" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("1_u0mmn")
 
 [node name="b_sprites" type="AnimatedSprite2D" parent="."]
