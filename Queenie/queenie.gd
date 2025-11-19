@@ -5,9 +5,10 @@ extends CharacterBody2D
 
 @onready var animation_player = $q_sprites
 
+const feedback = preload("res://feedback.tscn")
 const bullet = preload("res://bee_bullet.tscn")
 var pode_atirar: bool = true
-var cooldown_tiro: float = 0.3 # Cooldown de 0.3 segundos
+var cooldown_tiro: float = 0.3
 
 func _physics_process(delta):
 	var direcao = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -46,6 +47,11 @@ func atirar():
 	$TimerCooldownTiro.start(cooldown_tiro)
 
 func add_ammo():
+	var feedback_ammo = feedback.instantiate()
+	get_tree().root.add_child(feedback_ammo)
+	feedback_ammo.global_position = global_position + Vector2(0, -30)
+	feedback_ammo.cria_feedback("+1 Abelha", 1.0)
+	
 	ammo += 1
 	print(ammo)
 	

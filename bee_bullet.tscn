@@ -1,25 +1,38 @@
-[gd_scene load_steps=8 format=3 uid="uid://cg4x2rtat3v04"]
+[gd_scene load_steps=9 format=3 uid="uid://cg4x2rtat3v04"]
 
-[ext_resource type="Texture2D" uid="uid://buffspedx8p5v" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/coin_anim_f0.png" id="1_ovlxw"]
 [ext_resource type="Script" uid="uid://blcuqiihm5t8o" path="res://bee_bullet.gd" id="1_u0mmn"]
-[ext_resource type="Texture2D" uid="uid://fvfffci25b2f" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/coin_anim_f1.png" id="2_u0mmn"]
-[ext_resource type="Texture2D" uid="uid://csi80rghipgl7" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/coin_anim_f2.png" id="3_i2cvv"]
-[ext_resource type="Texture2D" uid="uid://bevugie47024g" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/coin_anim_f3.png" id="4_0eyk0"]
+[ext_resource type="Texture2D" uid="uid://qhg8grckui7y" path="res://assets/Spritesheets/Bee_Attack.png" id="2_ikmnr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5vgt"]
+atlas = ExtResource("2_ikmnr")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovlxw"]
+atlas = ExtResource("2_ikmnr")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0mmn"]
+atlas = ExtResource("2_ikmnr")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2cvv"]
+atlas = ExtResource("2_ikmnr")
+region = Rect2(192, 192, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mqtf7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ovlxw")
+"texture": SubResource("AtlasTexture_i5vgt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_u0mmn")
+"texture": SubResource("AtlasTexture_ovlxw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_i2cvv")
+"texture": SubResource("AtlasTexture_u0mmn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_0eyk0")
+"texture": SubResource("AtlasTexture_i2cvv")
 }],
 "loop": true,
 "name": &"idle",
@@ -32,13 +45,17 @@ height = 6.0
 
 [node name="bee_bullet" type="CharacterBody2D"]
 collision_layer = 8
-collision_mask = 2
+collision_mask = 18
 script = ExtResource("1_u0mmn")
 
 [node name="b_sprites" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_mqtf7")
 animation = &"idle"
 autoplay = "idle"
+frame = 3
+frame_progress = 0.92392474
 
 [node name="b_collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_fuunv")

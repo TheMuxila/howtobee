@@ -1,29 +1,55 @@
-[gd_scene load_steps=12 format=3 uid="uid://do8ubb5tolvhr"]
+[gd_scene load_steps=14 format=3 uid="uid://do8ubb5tolvhr"]
 
 [ext_resource type="Script" uid="uid://cb2p4hmkg1boy" path="res://Queenie/queenie.gd" id="1_7o7dh"]
-[ext_resource type="Texture2D" uid="uid://b5qaoei45pds3" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/pumpkin_dude_idle_anim_f0.png" id="1_8begp"]
-[ext_resource type="Texture2D" uid="uid://ca3fk3nuhf228" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/pumpkin_dude_idle_anim_f1.png" id="2_7o7dh"]
-[ext_resource type="Texture2D" uid="uid://d24d7myvek37j" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/pumpkin_dude_idle_anim_f2.png" id="3_ov8pr"]
-[ext_resource type="Texture2D" uid="uid://crchr0lx7tvhf" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/pumpkin_dude_idle_anim_f3.png" id="4_k1knn"]
-[ext_resource type="Texture2D" uid="uid://btawoww1lsjpb" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/pumpkin_dude_run_anim_f0.png" id="6_24fvv"]
-[ext_resource type="Texture2D" uid="uid://cnf6n56v07irx" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/pumpkin_dude_run_anim_f1.png" id="7_anqrp"]
-[ext_resource type="Texture2D" uid="uid://dfenoof06j7x6" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/pumpkin_dude_run_anim_f2.png" id="8_otjky"]
-[ext_resource type="Texture2D" uid="uid://3abb5d3h3rer" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/pumpkin_dude_run_anim_f3.png" id="9_my5v5"]
+[ext_resource type="Texture2D" uid="uid://b44x7et3hpry4" path="res://assets/Spritesheets/Bee_Idle.png" id="2_ov8pr"]
+[ext_resource type="Texture2D" uid="uid://bra87oxeychel" path="res://assets/Spritesheets/Bee_Walk.png" id="3_7upog"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1knn"]
+atlas = ExtResource("2_ov8pr")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82d28"]
+atlas = ExtResource("2_ov8pr")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24fvv"]
+atlas = ExtResource("2_ov8pr")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anqrp"]
+atlas = ExtResource("2_ov8pr")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8begp"]
+atlas = ExtResource("3_7upog")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o7dh"]
+atlas = ExtResource("3_7upog")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov8pr"]
+atlas = ExtResource("3_7upog")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otjky"]
+atlas = ExtResource("3_7upog")
+region = Rect2(192, 128, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_82d28"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_8begp")
+"texture": SubResource("AtlasTexture_k1knn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_7o7dh")
+"texture": SubResource("AtlasTexture_82d28")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_ov8pr")
+"texture": SubResource("AtlasTexture_24fvv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_k1knn")
+"texture": SubResource("AtlasTexture_anqrp")
 }],
 "loop": true,
 "name": &"idle",
@@ -31,16 +57,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_24fvv")
+"texture": SubResource("AtlasTexture_8begp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_anqrp")
+"texture": SubResource("AtlasTexture_7o7dh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_otjky")
+"texture": SubResource("AtlasTexture_ov8pr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_my5v5")
+"texture": SubResource("AtlasTexture_otjky")
 }],
 "loop": true,
 "name": &"run",
@@ -51,14 +77,15 @@ animations = [{
 size = Vector2(10, 12)
 
 [node name="Queenie" type="CharacterBody2D" groups=["player"]]
-collision_mask = 6
+collision_mask = 22
 script = ExtResource("1_7o7dh")
 
 [node name="q_sprites" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 9)
 sprite_frames = SubResource("SpriteFrames_82d28")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
-frame_progress = 0.010235449
+frame_progress = 0.24016921
 
 [node name="q_collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
