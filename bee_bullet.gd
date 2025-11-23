@@ -23,7 +23,10 @@ func _physics_process(_delta):
 			var feedback_dmg = feedback.instantiate()
 			get_tree().root.add_child(feedback_dmg)
 			feedback_dmg.global_position = global_position + Vector2(0, -20)
-			feedback_dmg.cria_feedback("10 dmg", 1.0)
+			feedback_dmg.cria_feedback("OUCH!", 1.0)
+			
+			collider.die()
+			
 			queue_free()
 			return
 		

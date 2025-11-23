@@ -40,8 +40,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b1nx6"]
-radius = 2.0
-height = 6.0
+radius = 4.0
+height = 8.0
 
 [node name="Bee" type="Area2D"]
 collision_layer = 4

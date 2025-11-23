@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var velocidade: float = 160.0 
-@export var ammo: int = 0
+@export var ammo: int = 3
 
 @onready var animation_player = $q_sprites
 

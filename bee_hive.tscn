@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddnkpv0hheqpv"]
+
+[ext_resource type="Script" uid="uid://o77fgir4x00w" path="res://bee_hive.gd" id="1_ir1wi"]
+[ext_resource type="Texture2D" uid="uid://bq0hqspy0loch" path="res://assets/Stup.png" id="1_uerpc"]
+[ext_resource type="Texture2D" uid="uid://6xa3n5ox1g5r" path="res://assets/Stup Dead.png" id="3_120pq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7acj"]
+size = Vector2(29, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ir1wi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_uerpc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_uerpc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_uerpc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_120pq")
+}],
+"loop": true,
+"name": &"damaging",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_120pq")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_uerpc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[node name="BeeHive" type="Area2D"]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("1_ir1wi")
+
+[node name="bh_collision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_m7acj")
+
+[node name="bh_sprites" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_ir1wi")
+animation = &"damaging"
+autoplay = "idle"
+
+[node name="atk_delay" type="Timer" parent="."]

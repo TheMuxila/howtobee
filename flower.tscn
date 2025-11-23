@@ -1,13 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmj2vu6a41unl"]
+[gd_scene load_steps=5 format=3 uid="uid://cmj2vu6a41unl"]
 
 [ext_resource type="Script" uid="uid://cj5i5jhti2iry" path="res://flower.gd" id="1_r72as"]
-[ext_resource type="Texture2D" uid="uid://baa28ecycf7df" path="res://assets/0x72_DungeonTilesetII_v1.7/frames/crate.png" id="2_nageh"]
+[ext_resource type="Texture2D" uid="uid://c1ffc3e2pnfos" path="res://assets/flowers.png" id="2_nageh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_511j0"]
+atlas = ExtResource("2_nageh")
+region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h22mm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_nageh")
+"texture": SubResource("AtlasTexture_511j0")
 }],
 "loop": true,
 "name": &"idle",
