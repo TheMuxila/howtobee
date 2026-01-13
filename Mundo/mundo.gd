@@ -2,23 +2,23 @@ extends Node2D
 
 @onready var spider_spawn = $spider_spawn
 @export var spawn_points: Array[Node2D]
-#@export var spawn_delay: float = 2.5
+
+var onda: int = 1
+var spiders: int = 0
+var delay: float = 2.0
 
 const spider = preload("res://spider.tscn")
+const hive = preload("res://bee_hive.tscn")
 
 func _ready() -> void:
+	var new_hive = hive.instantiate()
+	new_hive.global_position = Vector2(0,-1)
+	add_child(new_hive)
 	randomize()
-	#spawn_timer()
 	pass
 
 func _process(delta: float) -> void:
 	pass
-
-#func spawn_timer():
-	#var timer = Timer.new()
-	#add_child(timer)
-	#timer.wait_time = spawn_delay
-	#timer.timeout.connect(spawn_spiders())
 
 func spawn_spiders():
 	if spawn_points.is_empty():
@@ -31,5 +31,16 @@ func spawn_spiders():
 	add_child(new_spider)
 
 func _on_spider_spawn_timeout() -> void:
+	spider_spawn.wait_time = delay
 	spawn_spiders()
+	spiders += 1
+	print(spiders, " spiders")
+	
+	if spiders >= onda*20 and delay > 0.25:
+		spiders = 0
+		onda += 1
+		delay -= delay/5
+		
+		spider_spawn.wait_time = 10.0
+		
 	pass

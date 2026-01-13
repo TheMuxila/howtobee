@@ -28,7 +28,7 @@ autoplay = "idle"
 frame_progress = 0.19311348
 
 [node name="bee_spawn" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.0
 autostart = true
 
 [connection signal="timeout" from="bee_spawn" to="." method="_on_bee_spawn_timeout"]

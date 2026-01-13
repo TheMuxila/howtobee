@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://chfudy0dbecjh" path="res://feedback.gd" id="1_tt07q"]
 
 [node name="Feedback" type="Label"]
+texture_filter = 1
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

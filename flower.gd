@@ -4,7 +4,10 @@ const bee = preload("res://bee.tscn")
 
 @onready var bee_spawn = $bee_spawn
 
+var odds: int = 0
+
 func _ready() -> void:
+	randomize()
 	pass
 
 func _process(delta: float) -> void:
@@ -20,5 +23,9 @@ func spawn_bee():
 	get_tree().root.add_child(new_bee)
 
 func _on_bee_spawn_timeout() -> void:
-	spawn_bee()
+	odds = randi_range(1, 10)
+	
+	if odds > 8:
+		spawn_bee()
+
 	pass

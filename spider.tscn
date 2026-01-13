@@ -133,6 +133,8 @@ radius = 5.0
 collision_layer = 16
 collision_mask = 42
 script = ExtResource("1_qrebf")
+vel = null
+alvo = null
 
 [node name="s_sprites" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -13)
@@ -145,3 +147,7 @@ frame_progress = 0.6559512
 [node name="s_collision" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_qrebf")
+
+[node name="s_apsd" type="Timer" parent="."]
+
+[connection signal="timeout" from="s_apsd" to="." method="_on_s_apsd_timeout"]

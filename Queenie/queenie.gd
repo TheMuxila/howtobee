@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var velocidade: float = 160.0 
 @export var ammo: int = 3
 
+@onready var hud_abelhas = $HUD/Abelhas
 @onready var animation_player = $q_sprites
 
 const feedback = preload("res://feedback.tscn")
@@ -31,9 +32,15 @@ func _input(event):
 	if event.is_action_pressed("atirar") and pode_atirar and ammo > 0:
 		atirar()
 		
+
+func atualiza_abelhas(valor):
+	hud_abelhas.text = "Abelhas: " + str(valor)
+
 func atirar():
 	pode_atirar = false
 	ammo -= 1
+	atualiza_abelhas(ammo)
+	
 	var novo_projetil = bullet.instantiate()
 	
 	get_tree().root.add_child(novo_projetil)
@@ -53,6 +60,7 @@ func add_ammo():
 	feedback_ammo.cria_feedback("+1 Abelha", 1.0)
 	
 	ammo += 1
+	atualiza_abelhas(ammo)
 	print(ammo)
 	
 func _on_timer_cooldown_tiro_timeout():
