@@ -15,6 +15,9 @@ func _ready() -> void:
 	new_hive.global_position = Vector2(0,-1)
 	add_child(new_hive)
 	randomize()
+	
+	await get_tree().create_timer(10.0).timeout
+	$Hide.show()
 	pass
 
 func _process(delta: float) -> void:

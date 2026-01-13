@@ -7,6 +7,7 @@ const hive = preload("res://bee_hive.tscn")
 const feedback = preload("res://feedback.tscn")
 
 var reach: bool = false
+var dead: bool = false
 
 func _ready() -> void:
 	pass
@@ -18,10 +19,9 @@ func _physics_process(_delta):
 	if reach:
 		$s_sprites.play("atk")
 		velocity = Vector2.ZERO
-		
 		await get_tree().create_timer(0.5).timeout
-		
 		dano_hive()
+		
 		die()
 		return
 	
@@ -41,9 +41,14 @@ func _physics_process(_delta):
 		$s_sprites.flip_h = false
 
 func dano_hive():
-	get_tree().call_group("hive", "tomar_dano")
+	if dead == false:
+		get_tree().call_group("hive", "tomar_dano")
+		dead = true
 
 func die():
+	$s_sprites.play("die")
+	$s_collision.set_deferred("disabled", true)
+	await get_tree().create_timer(0.7).timeout
 	queue_free()
 	return
 
